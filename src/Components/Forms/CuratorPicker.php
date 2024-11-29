@@ -280,6 +280,7 @@ class CuratorPicker extends Field
     {
         return Action::make('open_curator_picker')
             ->label($this->getButtonLabel())
+            ->icon('heroicon-o-plus')
             ->button()
             ->color($this->getColor())
             ->outlined($this->isOutlined())
