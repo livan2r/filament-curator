@@ -62,9 +62,11 @@ class ListMedia extends ListRecords
                 ->action(function ($livewire): void {
                     $livewire->dispatch('changeLayoutView');
                 }),
-            MultiUploadAction::make(),
+            MultiUploadAction::make()
+                ->icon('heroicon-o-arrow-up-on-square-stack'),
             CreateAction::make()
-                ->label(fn (): string => trans('filament-actions::create.single.label', ['label' => CuratorPlugin::get()->getLabel()])),
+                ->label(fn (): string => trans('filament-actions::create.single.label', ['label' => CuratorPlugin::get()->getLabel()]))
+                ->icon('heroicon-o-plus')   ,
         ];
     }
 }

@@ -23,12 +23,15 @@ class EditMedia extends EditRecord
         return [
             Action::make('save')
                 ->action('save')
-                ->label(trans('curator::views.panel.edit_save')),
+                ->label(trans('curator::views.panel.edit_save'))
+                ->icon('heroicon-s-check'),
             Action::make('preview')
                 ->color('gray')
                 ->url($this->record->url, shouldOpenInNewTab: true)
-                ->label(trans('curator::views.panel.view')),
-            DeleteAction::make(),
+                ->label(trans('curator::views.panel.view'))
+                ->icon('heroicon-s-eye'),
+            DeleteAction::make()
+                ->icon('heroicon-s-trash'),
         ];
     }
 

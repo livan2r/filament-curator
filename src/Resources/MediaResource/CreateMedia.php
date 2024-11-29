@@ -2,8 +2,9 @@
 
 namespace Awcodes\Curator\Resources\MediaResource;
 
+use App\Filament\Resources\BaseClasses\CreateRecord;
 use Awcodes\Curator\CuratorPlugin;
-use Filament\Resources\Pages\CreateRecord;
+
 
 class CreateMedia extends CreateRecord
 {
