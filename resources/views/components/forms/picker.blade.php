@@ -95,53 +95,56 @@
                             </div>
                         </div>
                     @else
-                        <div
-                            @class([
-                                'relative block w-full overflow-hidden border border-gray-300 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white flex justify-center checkered',
-                                'h-64' => ! str($item['type'])->contains('video'),
-                                'md:flex-1 ' => $itemsCount <= 3,
-                            ])
-                        >
-                        @if (str($item['type'])->contains('image'))
-                            <img
-                                src="{{ $item['large_url'] }}"
-                                alt="{{ $item['alt'] ?? $item['name'] }}"
-                                @if ($shouldLazyLoad())
-                                    loading="lazy"
-                                @endif
+                        <div class="flex items-start">
+                            <div
                                 @class([
-                                   'h-full',
-                                   'object-contain' => $isConstrained(),
-                                   'object-cover w-full' => ! $isConstrained(),
-                               ])
-                            />
-                        @elseif (str($item['type'])->contains('video'))
-                            <video
-                                controls
-                                src="{{ $item['url'] }}"
-                                @if ($shouldLazyLoad())
-                                    preload="none"
-                                @endif
-                            ></video>
-                        @else
-                            <x-curator::document-image
-                                label="{{ $item['name'] }}"
-                                icon-size="xl"
-                            />
-                        @endif
+                                    'max-w-16',
+                                    'relative block w-full overflow-hidden border border-gray-300 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white flex justify-center checkered',
+                                    'h-64' => ! str($item['type'])->contains('video'),
+                                    'md:flex-1 ' => $itemsCount <= 3,
+                                ])
+                            >
+                            @if (str($item['type'])->contains('image'))
+                                <img
+                                    src="{{ $item['large_url'] }}"
+                                    alt="{{ $item['alt'] ?? $item['name'] }}"
+                                    @if ($shouldLazyLoad())
+                                        loading="lazy"
+                                    @endif
+                                    @class([
+                                       'h-full',
+                                       'object-contain' => $isConstrained(),
+                                       'object-cover w-full' => ! $isConstrained(),
+                                   ])
+                                />
+                            @elseif (str($item['type'])->contains('video'))
+                                <video
+                                    controls
+                                    src="{{ $item['url'] }}"
+                                    @if ($shouldLazyLoad())
+                                        preload="none"
+                                    @endif
+                                ></video>
+                            @else
+                                <x-curator::document-image
+                                    label="{{ $item['name'] }}"
+                                    icon-size="xl"
+                                />
+                            @endif
 
-                        <div class="absolute top-0 right-0">
+                            </div>
+
                             <div class="relative flex items-center bg-gray-950 divide-x divide-gray-700 rounded-bl-lg shadow-md">
                                 @if ($isMultiple)
                                     <div
                                         x-sortable-handle
-                                        class="flex items-center justify-center flex-none w-10 h-10 transition text-gray-400 hover:text-gray-300"
+                                        class="flex items-center justify-center flex-none w-10 h-10 transition text-gray-600 hover:text-gray-400"
                                     >
                                         {{ $getAction('reorder') }}
                                     </div>
                                 @endif
 
-                                <div class="flex items-center justify-center flex-none w-10 h-10">
+                                <div class="flex items-start justify-center flex-none w-10 h-10">
                                     <x-filament-actions::group
                                         :actions="[
                                             $getAction('view')(['url' => $item['url']]),
@@ -150,19 +153,19 @@
                                             $getAction('remove')(['uuid' => $uuid]),
                                         ]"
                                         color="gray"
-                                        size="xs"
+                                        size="sm"
                                         dropdown-placement="bottom-end"
                                     />
                                 </div>
                             </div>
-                        </div>
 
-                        @if (! str($item['type'])->contains('video'))
-                            <div class="absolute inset-x-0 bottom-0 flex items-center justify-between px-2 pt-10 pb-1 text-xs text-white bg-gradient-to-t from-black/80 to-transparent gap-3">
-                                <p class="truncate">{{ $item['pretty_name'] }}</p>
-                                <p class="flex-shrink-0">{{ $item['size_for_humans'] }}</p>
-                            </div>
-                        @endif
+                            @if (! str($item['type'])->contains('video'))
+                                <div class="inset-x-0 flex items-center justify-between px-0 pt-10 pb-1 text-xs dark:text-white text-gray-600 hover:text-gray-400 bg-gradient-to-t from-black/80 to-transparent gap-3">
+                                    <p class="truncate">{{ $item['pretty_name'] }}</p>
+                                    <p class="flex-shrink-0">{{ $item['size_for_humans'] }}</p>
+                                </div>
+                            @endif
+
                         </div>
                     @endif
                 </li>
