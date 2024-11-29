@@ -16,7 +16,7 @@ class Media extends Model
 {
     use HasPackageFactory;
 
-    protected $guarded = [];
+    protected $guarded = [ 'folder' ];
 
     protected $casts = [
         'width' => 'integer',

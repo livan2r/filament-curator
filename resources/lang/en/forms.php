@@ -19,6 +19,7 @@ return [
         'file' => 'File',
         'title' => 'Title',
         'name' => 'Name',
+        'folder' => 'Folder',
     ],
     'notices' => [
         'success' => 'Item updated successfully.',

@@ -303,6 +303,11 @@ class MediaResource extends Resource
             Forms\Components\Textarea::make('caption')
                 ->label(trans('curator::forms.fields.caption'))
                 ->rows(2),
+            Forms\Components\Select::make('folder')
+                ->label(trans('curator::forms.fields.folder'))
+                ->options(config('curator.folders'))
+                ->visible(fn (string $operation) => $operation === 'create' && config('curator.path_generator') === \App\Filament\Support\FolderPathGenerator::class)
+                ->default('root'),
             Forms\Components\Textarea::make('description')
                 ->label(trans('curator::forms.fields.description'))
                 ->rows(2),

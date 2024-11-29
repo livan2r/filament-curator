@@ -19,6 +19,7 @@ return [
         'file' => 'Archivo',
         'title' => 'Título',
         'name' => 'Nombre',
+        'folder' => 'Carpeta',
     ],
     'notices' => [
         'success' => 'El ítem ha sido actualizado',
