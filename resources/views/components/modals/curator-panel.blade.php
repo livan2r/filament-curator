@@ -69,7 +69,7 @@
             <x-filament::icon
                 alias="curator::icons.check"
                 icon="heroicon-s-magnifying-glass"
-                class="w-4 h-4 absolute top-1.5 left-2 rtl:left-0 rtl:right-2 dark:text-gray-500"
+                class="w-3 h-3 absolute top-1.5 left-2 rtl:left-0 rtl:right-2 dark:text-gray-500"
             />
             <input
                 type="search"
@@ -166,7 +166,7 @@
         <!-- End Gallery -->
 
         <!-- Sidebar -->
-        <div class="curator-panel-sidebar w-full lg:h-full lg:max-w-xs overflow-auto bg-gray-100 dark:bg-gray-900/30 flex flex-col shadow-top lg:shadow-none z-[1]">
+        <div class="curator-panel-sidebar w-full lg:h-full lg:max-w-xs overflow-auto bg-gray-100 dark:bg-gray-950 flex flex-col shadow-top lg:shadow-none z-[1]">
             <div class="flex-1 overflow-hidden">
                 <div class="flex flex-col h-full overflow-y-auto">
                     <h4 class="font-bold py-2 px-4 mb-0">
@@ -179,7 +179,7 @@
                         </span>
                     </h4>
 
-                    <div class="flex-1 overflow-auto px-4 pb-4">
+                    <div class="flex-1 overflow-auto px-4 pb-4 pt-2">
                         <div class="h-full">
                             <div class="mb-4 mt-px">
                                 {{ $this->form }}
@@ -188,7 +188,7 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-start mt-auto gap-3 py-3 px-4 border-t border-gray-300 bg-gray-200 dark:border-gray-800 dark:bg-black/10">
+                    <div class="flex items-center justify-start mt-auto gap-3 py-3 px-4 border-gray-300 bg-gray-200 dark:bg-gray-800 dark:border-gray-800 dark:bg-black/10">
                         @if (count($selected) !== 1)
                             <div>
                                 {{ $this->addFilesAction }}
