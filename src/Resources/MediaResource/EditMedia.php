@@ -3,6 +3,7 @@
 namespace Awcodes\Curator\Resources\MediaResource;
 
 use Awcodes\Curator\CuratorPlugin;
+use Awcodes\Curator\Resources\MediaResource;
 use Exception;
 use Filament\Actions\Action;
 use Filament\Actions\DeleteAction;
@@ -21,15 +22,20 @@ class EditMedia extends EditRecord
     public function getHeaderActions(): array
     {
         return [
-            Action::make('save')
-                ->action('save')
-                ->label(trans('curator::views.panel.edit_save'))
-                ->icon('heroicon-s-check'),
+            Action::make('back')
+                ->url(MediaResource::getUrl())
+                ->label(__('admin.return'))
+                ->color('gray')
+                ->icon('heroicon-o-arrow-left'),
             Action::make('preview')
                 ->color('gray')
                 ->url($this->record->url, shouldOpenInNewTab: true)
                 ->label(trans('curator::views.panel.view'))
                 ->icon('heroicon-s-eye'),
+            Action::make('save')
+                ->action('save')
+                ->label(trans('curator::views.panel.edit_save'))
+                ->icon('heroicon-s-check'),
             DeleteAction::make()
                 ->icon('heroicon-s-trash'),
         ];
