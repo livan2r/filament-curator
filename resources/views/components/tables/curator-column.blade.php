@@ -85,7 +85,7 @@
                 />
             @elseif (str($item->type)->contains('svg'))
                 <img
-                    src="{{ Storage::url($item->path) }}"
+                    src="{{ $item->getSignedUrl() }}"
                     alt="{{ $item->alt }}"
                     style="
                         {!! $height !== null ? "height: {$height};" : "height: 2rem;" !!}
