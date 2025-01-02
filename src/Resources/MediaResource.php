@@ -11,6 +11,7 @@ use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\ActionSize;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Config;
@@ -193,8 +194,14 @@ class MediaResource extends Resource
                     : static::getDefaultTableColumns(),
             )
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->hiddenLabel()
+                    ->size(ActionSize::Medium)
+                    ->tooltip(__('filament-actions::edit.single.label')),
+                Tables\Actions\DeleteAction::make()
+                    ->hiddenLabel()
+                    ->size(ActionSize::Medium)
+                    ->tooltip(__('filament-actions::delete.single.label')),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
