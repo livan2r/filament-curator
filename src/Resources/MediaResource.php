@@ -96,6 +96,7 @@ class MediaResource extends Resource
                     ->schema([
                         Forms\Components\Section::make(trans('curator::forms.sections.file'))
                             ->hiddenOn('edit')
+                            ->compact()
                             ->schema([
                                 static::getUploaderField()
                                     ->required(),
@@ -138,6 +139,7 @@ class MediaResource extends Resource
                                     ]),
                             ]),
                         Forms\Components\Section::make(trans('curator::forms.sections.details'))
+                            ->compact()
                             ->schema([
                                 Forms\Components\ViewField::make('details')
                                     ->view('curator::components.forms.details')
@@ -149,6 +151,7 @@ class MediaResource extends Resource
                                     }),
                             ]),
                         Forms\Components\Section::make(trans('curator::forms.sections.exif'))
+                            ->compact()
                             ->collapsed()
                             ->visible(fn ($record) => $record && $record->exif)
                             ->schema([
@@ -168,6 +171,7 @@ class MediaResource extends Resource
                 Forms\Components\Group::make()
                     ->schema([
                         Forms\Components\Section::make(trans('curator::forms.sections.meta'))
+                            ->compact()
                             ->schema(
                                 static::getAdditionalInformationFormSchema()
                             ),
